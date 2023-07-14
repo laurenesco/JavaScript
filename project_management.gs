@@ -193,3 +193,4 @@ function getEmail(emailTo) {
 function remainingEmails() {
   console.log(MailApp.getRemainingDailyQuota());
 }
+
