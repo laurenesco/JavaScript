@@ -8,7 +8,15 @@
 //                        Please note:
 //                          - A lot of the code is dependent on locations of columns and text in columns, 
 //                            ctrl+f "dependent" to view all of these instances, they have been marked for clarity
+//                          - All strings and values from the sheet are white space sensitive!! Ensure you trim all
+//                            white space in the sheet often, and if you experience any issues
 //
+
+// !! All of the following code is dependent on the following, change as needed !!
+//      - Task title in:  column B
+//      - Assignee in:    column C
+//      - Reviewer in:    column D
+//      - Status in:      column E
 
 // Returns todays date, not currently in use but can be useful 
 function getDate() {
@@ -28,11 +36,7 @@ function onEdit(e) {
   // Isolate row number with regex
   var row = notation.replace(/\D+/g, '');
 
-  // !! All of the following code is dependent on the following, change as needed !!
-  //      - Task title in:  column B
-  //      - Assignee in:    column C
-  //      - Reviewer in:    column D
-  //      - Status in:      column E
+  // !! Dependent code below !!
 
   // Get title of task for the row edited
   var titleA1 = "B" + row; 
@@ -69,8 +73,9 @@ function onEdit(e) {
 // EMAIL RELATED FUNCTIONS //
 /////////////////////////////
 
-// These functions use the MailApp class to send emails.
-// Documentation can be reviewed here: https://developers.google.com/apps-script/reference/mail/mail-app
+// - These functions use the MailApp class to send emails.
+// - Documentation can be reviewed here: https://developers.google.com/apps-script/reference/mail/mail-app
+// - !! These are all dependent on the column specifications at the top of the file !!
 
 // Sends a notification email to the assignee, notifying them an assigned task was reopened; accepts a string parameter indicating tast name
 function sendReopenedEmail(taskTitle) {
@@ -188,25 +193,3 @@ function getEmail(emailTo) {
 function remainingEmails() {
   console.log(MailApp.getRemainingDailyQuota());
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
