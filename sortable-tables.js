@@ -1,3 +1,11 @@
+//
+// Program Name: sortable-tables.js
+// Date Last Modified: 07/08/2024
+// Last Modified By:
+//
+// Program Description:
+//
+
 // Function to sort the table data
 function sortTable(event) {
   const table = event.target.closest("table");
@@ -40,7 +48,7 @@ function sortTable(event) {
     header.textContent = header.textContent.replace(/\u2191|\u2193/g, '').trim();
   });
 
-  // Add new arrow 
+  // Add new arrow
   const sortOrderArrow = sortOrder === "asc" ? " \u2191" : " \u2193";
   event.target.textContent = event.target.textContent.trim() + sortOrderArrow;
 
@@ -89,7 +97,7 @@ sortableTables.forEach(table => {
     headers.forEach(header => {
       header.addEventListener("click", sortTable);
       if (header.textContent.trim() !== "") {
-        header.style.cursor = "pointer"; 
+        header.style.cursor = "pointer";
         header.style.textDecoration = "underline";
         header.style.color = "#006699";
       }
